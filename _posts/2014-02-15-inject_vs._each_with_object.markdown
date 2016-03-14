@@ -1,0 +1,112 @@
+---
+title: Inject vs. Each_With_Object
+layout: post
+date: 2014-02-15  9:53:50
+blog: true
+---
+
+In the time since we completed the Scrooge McDuck lab during out first week, which required us to use the inject method, I've wanted to better understand the difference between .inject and .each_with_object. When faced with a similar task this week—to sort a hash of students—I looked back at the Scrooge McDuck assignment in order to set the record straight.
+
+## Definitions
+
+According to the Ruby Documentation for the Enumerable class, each_with_object "iterates the given block for each element with an arbitrary object given, and returns the initially given object." It has only two implementations:
+
+{% highlight ruby %}
+  each_with_object(obj) { |(*args), memo_obj| ... } #> obj
+  each_with_object(obj) #> an_enumerator
+{% endhighlight %}
+
+Inject contains a lot more logic than each_with_object, as represented by its four implementations:
+
+{% highlight ruby %}
+  inject(initial, sym) #> obj
+  inject(sym) #> obj
+  inject(initial) { |memo, obj| block } #> obj
+  inject { |memo, obj| block } #> obj
+{% endhighlight %}
+
+Here are the parts of the inject documentation pertaining to my goals: "If you specify a block, then for each element in enum the block is passed an accumulator value (memo) and the element. ...[T]he result becomes the new value for memo. At the end of the iteration, the final value of memo is the return value for the method." (When generatig a new object using this method, "memo" stands for "{}" or "[]".)
+
+When I first read this documentation, it didn't really clear anything up for me. In the case of .each_with_object, what does "returns the initially given object" mean? In the example of the hash of students, is the initially given object the unsorted version, before .each_with_object operated on it, or the sorted version? In other words, is its return similar to .each or like .map? And is it the block that is returning the object, or the method? As for .inject, if the return value is the "final value of memo," then what was all that about a new value for memo in the sentence before?
+
+I had to take both methods out for a test drive.
+
+## First Encounters
+
+One thing was clear from the documentation: the order of the arguments was different for each method. In the case of .inject, the variable representing the object comes first, and the variable representing each element of iteration comes second. For .each_with_object, these two are reversed.
+
+Beyond syntax, what are the differences between these two similar methods? The process my team went through to solve the Scrooge McDuck lab the first time provides a prety good explanation. Given this object:
+
+{% highlight ruby %}
+  scrooges_receipts = ["$$$", "$$$$$$$$$$", "$", "$$$$$$"]
+{% endhighlight %}
+
+We had to generate a hash that looked like this:
+
+{% highlight ruby %}
+  {
+     "$$"  => "$2",
+     "$"   => "$1",
+     "$$$" => "$3"
+  }
+{% endhighlight %}
+
+Here is how we first tried to solve this problem with .inject:
+
+{% highlight ruby %}
+	receipts.inject({}) do |hash, receipt|
+    hash[receipt] = "$#{receipt.length}"
+  end
+{% endhighlight %}
+
+We defined "memo" as {}, put the arguments in the right order, and wrote a statement to define each key and value for my new hash. According to the documentation, this should return the final value of memo. What could go wrong?
+
+Of course, this didn't work. That's because we didn't understand what this sentence meant: "If you specify a block, then for each element in enum the block is passed an accumulator value (memo) and the element. ...[T]he result becomes the new value for memo." By "result," I realized they meant not the result of the method, but the result of the block. Thus, for the next loop in the iteration, hash would now == hash[receipt] = "$#{receipt.length}", not {hash[receipt] = "$#{receipt.length}"}. We needed to get the block to return the object, so we returned it at the end:
+
+{% highlight ruby %}
+	receipts.inject({}) do |hash, receipt|
+    hash[receipt] = "$#{receipt.length}"
+    hash
+  end
+{% endhighlight %}
+
+That worked as desired, and I understood inject better as a result. But returning the object in the block didn't seem very elegant. Would I be able to avoid that issue using .each_with_object?
+
+{% highlight ruby %}
+	receipts.each_with_object({}) do |receipt, hash|
+  	hash[receipt] = "$#{receipt.length}"
+ 	end
+{% endhighlight %}
+
+I could! I didn't need to return the object at the end of the block because each_with_object did that for me. How useful!
+
+## One Week Later...
+
+The reason I looked back at my solution for the Scrooge McDuck lab was because I had gotten hung up yet again on this sentence in the each_with_object documentation: "Iterates the given block for each element with an arbitrary object given, and returns the initially given object." I asked myself the same questions as before: Is the block passed to .each_with_object returning the object, or is the method? And what object are they talking about?
+
+What the documentation really should have said was something like this: "Iterates the given block for each element with an arbitrary object given, evaluating to the object on each iteration. Returns the resulting object."
+
+It's a bit less concise, I know, but that much better explains its behavior. In my opinion, documentation should really not use the word "return" without specifying exactly whether they are talking about the method or a block passed into a method. So confusing was their explanation, that on my first solution for sorting a hash of students, I avoided .each_with_object, fearing that it would return my original roster of students instead of the sorted version.
+
+{% highlight ruby %}
+	@roster = {
+	9=>["Homer Simpson", "Bart Simpson"],
+	10=>["Avi Flombaum", "Jeff Baird"],
+	7=>["Blake Johnson", "Jack Bauer"]
+	}
+
+	@roster.sort.inject({}) do |hash, i|
+		hash[i[0]] = i[1].sort
+		hash
+	end
+{% endhighlight %}
+
+The documentation had led me to believe that .each_with_object and .inject returned different things. Once I looked back at my Scrooge McDuck solution, I realized this couldn't be true, so I refactored the above with .each_with_object.
+
+{% highlight ruby %}
+  @roster.sort.each_with_object({}) do |i, hash|
+    hash[i[0]] = i[1].sort
+  end
+{% endhighlight %}
+
+As you can probably guess, this solution works fine. My big takeaway, besides finally fully understanding the differences between .inject and .each_with_object? Documentation can really suck, and you have to try everything out yourself.
