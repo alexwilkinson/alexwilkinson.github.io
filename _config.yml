@@ -1,41 +1,43 @@
 # main text of home
-name: John Doe
-bio: 'A Man who travels the world eating noodles'
+name: Alex Wilkinson
+bio: 'web developer, writer, board game designer'
 
 # if it's an external image, update below for true
 external-image: false
-picture: 'assets/images/profile.jpg'
+picture: 'assets/images/wedding.jpg'
 
-url: http://sergiokopplin.github.io/indigo
+url: http://alexwilkinson.github.io
 # your url: http://USERNAME.github.io
 
 permalink: /:title/
 
 markdown: kramdown
+kramdown:
+  input: GFM
 highlighter: rouge
 
-analytics-google: 'UA-MYANALYTICS'
+# analytics-google: 'UA-MYANALYTICS'
 
 # if you don't want comments in your posts, set to false
-disqus: mydisqus
+disqus: false
 
 # if you don't have any of social below, comment the line
-facebook: myfacebook
-twitter: mytwitter
+facebook: alex.wilkinson
+twitter: literatechie
 # google: mygoogle
-# instagram: myinstagram
+instagram: iamwilk
 # pinterest: mypinterest
-# linkedin: mylinkedin
-youtube: myyoutube
-spotify: myspotify
-github: mygithub
-medium: medium
-email: myemail@gmail.com
+linkedin: alexcwilkinson
+# youtube: myyoutube
+# spotify: myspotify
+github: alexwilkinson
+# medium: medium
+email: alex.wilkinson@me.com
 
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal
 # normal = 560px / large = 810px
-width: normal
+width: large
 
 # if you don't need pagination, comment the *paginate* configs below
 # paginate: 5
