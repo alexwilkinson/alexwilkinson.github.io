@@ -369,7 +369,6 @@ figure.highlight {
 }
 code,
 tt {
-  padding: 1px 3px;
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 12px;
   line-height: 20px;
