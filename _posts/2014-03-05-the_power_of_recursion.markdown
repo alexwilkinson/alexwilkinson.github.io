@@ -15,9 +15,9 @@ I expressed my reservations to a fellow Flatiron student, [Daniel Kronovet](http
 
 ## Function(function(function(function)))
 
-So what are recursions, anyway? Here's my (probably not fully accurate) understanding of a common use case for them. Not exactly a defintion, I know, but you can go to Wikipedia for that!
+So what are recursions, anyway? Here's my (probably not fully accurate) understanding of a common use case for them. Not exactly a definition, I know, but you can go to Wikipedia for that!
 
-A recursive function is one that implements an algorithim to solve a problem that, in the process, requires calling itself. I like to think of recursive functions as a proxy for the programmer herself. Rather than the coder implementing each step in the process of solving a problem, she instead identifies a higher-level algorithm that will lead to a solution and tells the computer to run it. This requires a certain level of faith, particularly for complex recursive functions. You don't necessarily need to know what the function does at every step (unless it isn't working...) as long as you have written accurate instructions for the computer to follow.
+A recursive function is one that implements an algorithm to solve a problem that, in the process, requires calling itself. I like to think of recursive functions as a proxy for the programmer herself. Rather than the coder implementing each step in the process of solving a problem, she instead identifies a higher-level algorithm that will lead to a solution and tells the computer to run it. This requires a certain level of faith, particularly for complex recursive functions. You don't necessarily need to know what the function does at every step (unless it isn't working...) as long as you have written accurate instructions for the computer to follow.
 
 To write a recursive solution to a problem, you need to identify and implement three things:
 
@@ -46,7 +46,7 @@ It's easy to find the first few fibonacci numbers, but it rapidly gets quite dif
 
 Let's analyze this method based on the criteria for recursive functions described above. In order to do so, I'm going to write it out on a few more lines so it's easier to see, even though it's a bit less svelte. (Yes, that's the techinical term.)
 
-{% highlight ruby lineos %}
+{% highlight ruby %}
 def fib n
   if n <= 0
     n
@@ -64,7 +64,7 @@ At this level of abstraction, we can express this idea recursively. At fib(n-1) 
 
 This was really hard to wrap my head around at first, but that's kind of the point of recursion. Once you understand how to solve for any fibonacci number, you can solve for the rest without even fully understanding what's going on at each step. In this case though, there are very handy images that cleanly map out what this function accomplishes.
 
-![Fibonacci Tree]({{ site.url }}/assets/fib.png)
+![Fibonacci Tree]({{ site.url }}/assets/images/fib.png)
 
 So for each phrase on line 7, this function recursively determines all of the fibonacci numbers that form it until reaching fib(2) or fib(1), which it already knows equals 1. All of those recursive calls are summed, revealing our answer. All this function does is add the right number of 1's together!
 
@@ -78,7 +78,7 @@ Basically, this means that you never have to solve any problem recursively if yo
 
 I really wanted to practice recursion after finally beginning to understand it, so I jumped at the opportunity to use it to solve the maze problem. Yesterday, my team and I did just that, and I have included the result below. You can check out the full set of files [here](https://github.com/flatiron-school-students/maze-solver-ruby-004/pull/7/files).
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 def search(current, history)
  possibilities = next_nodes(current, history)
  if possibilities.empty?
