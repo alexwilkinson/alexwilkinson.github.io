@@ -78,7 +78,7 @@ describe "GET #index" do
     before do
       get :index
     end
-    
+
     it "responds with a 200 status code" do
       expect(response).to be_success
     end
@@ -101,18 +101,18 @@ I handled fuzzy search matching (“Iron Man” => “Iron Man”, “Iron Man 2
 
 {% highlight ruby %}
 case params[:category]
-      when "Movie"
-        @results = Movie.where('title LIKE ?', "%#{params[:q]}%")
-        redirect_to movie_path(@results.first) if @results.count == 1
-      when "Actor"
-        @results = Actor.where('name LIKE ?', "%#{params[:q]}%")
-        redirect_to actor_path(@results.first) if @results.count == 1
-      when "Director"
-        @results = Director.where('name LIKE ?', "%#{params[:q]}%")
-        redirect_to director_path(@results.first) if @results.count == 1
-      when "Genre"
-        @results = Genre.where('name LIKE ?', "%#{params[:q]}%")
-        redirect_to genre_path(@results.first) if @results.count == 1
+when "Movie"
+  results = Movie.where('title LIKE ?', "%#{params[:q]}%")
+  redirect_to movie_path(results.first) if results.count == 1
+when "Actor"
+  results = Actor.where('name LIKE ?', "%#{params[:q]}%")
+  redirect_to actor_path(results.first) if results.count == 1
+when "Director"
+  results = Director.where('name LIKE ?', "%#{params[:q]}%")
+  redirect_to director_path(results.first) if results.count == 1
+when "Genre"
+  results = Genre.where('name LIKE ?', "%#{params[:q]}%")
+  redirect_to genre_path(results.first) if results.count == 1
 {% endhighlight %}
 
 Nothing terribly profound, but I was proud of it. And yes, I know that this could be totally refactored. I'll get to it soon, promise!
@@ -125,7 +125,7 @@ I would explain what my procedure was, but I have subsequently learned of an eas
 
 The best way to get started using bootstrap quickly without a theme is to take advantage of bootstrap grid layouts. Having wrestled with stubborn divs for longer than I'd like to admit, floating helplessly left and right and positioning absolutely and relatively like a madman, it feels pretty great to tuck page elements neatly into column-spanning modules and rows. It's an awesome way to quickly bring some order and consistency to your layout without too much effort.
 
-![Bootstrap Alerts]({{ site.url }}/assets/bootstrap-alerts.png)
+![Bootstrap Alerts]({{ site.url }}/assets/images/bootstrap-alerts.png)
 
 Also, the bootstrap-styled rails flash messages are really pretty, and you can make them dismissible, too! Pro Tip: Positioning them absolutely is a great way to have them hover on top of the page instead of shoving everything beneath it down.
 
@@ -134,28 +134,23 @@ Also, the bootstrap-styled rails flash messages are really pretty, and you can m
 The final piece of the puzzle was figuring out how to cleanly and effectively insert charts into my views. I wanted to display the filmetrics of all of a director or actor's movies as a line chart in order to better contextualize each of their average filmetrics.
 
 {% highlight ruby %}
-<% @data = [].tap do |data| %>
-        <% @actor.movies.map do |movie| %>
-          <% data << [Time.new(movie.release_year), movie.filmetric] %>
-        <% end %>
-      <% end %>
+<% data = [].tap do |data| %>
+  <% actor.movies.map do |movie| %>
+    <% data << [Time.new(movie.release_year), movie.filmetric] %>
+  <% end %>
+<% end %>
 
-     <%= line_chart @data, library: { tooltip: { trigger: 'none' },
-     title: "Movies by Filmetric" } %>
+<%= line_chart data,
+ library: { tooltip: { trigger: 'none' },
+ title: "Movies by Filmetric" } %>
 {% endhighlight %}
 
 It turned out that [Chartkick] (http://chartkick.com/) was one of the easiest ways to do so without resorting to front-end skills way beyond my abilities. I found it easiest to insert the data into the chart using a pre-generated hash of values, or x,y coordinates, for the graph. The x-coordinates needed to be date objects, so I used `Time.new` to format the release_years in each movie.
 
-![Filmetric Graph]({{ site.url }}/assets/filmetric-graph.png)
+![Filmetric Graph]({{ site.url }}/assets/images/filmetric-graph.png)
 
 I had two major issues with this implementation, unfortunately. One, I couldn't figure out how to get the “tooltips” on each data point to display a movie title, which meant that I disabled them entirely. Two, I only stored movie release dates as years, meaning that when actors or directors inevitably had movies in the same year, the data points overlapped, making the graphs less robust. Re-querying the data will rectify the second issue, and the first can hopefully be resolved by just understanding how to use Chartkick better.
 
 ## Conclusion
 
 I'm super excited by how far my paltry rails knowledge has gotten me so far. It is honestly surreal to surf my Filmetric app and reflect on the fact that I built it myself, a task that just a few months ago I always felt would be someone else's job. It's no where near finished, but I can't wait to keep returning to the project with new knowledge and new ideas over the duration of the Flatiron School.
-
-
-
-
-
-

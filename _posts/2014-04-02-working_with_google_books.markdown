@@ -15,7 +15,7 @@ The API is basically an iFrame that can be inserted into any div. The JavaScript
 
 The documentation assumes that you will be embedding the viewer straight into your HTML, like so:
 
-{% highlight html linenos %}
+{% highlight html %}
 <!DOCTYPE html "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -46,7 +46,7 @@ We pretty much just followed Google by the letter to get it working in our Rails
 
 Here is the first file:
 
-{% highlight html linenos %}
+{% highlight html %}
 <script type="text/javascript">
   google.load("books", "0");
     $(document).ready(function initialize(){
@@ -66,7 +66,7 @@ Here is the first file:
 
 And the second:
 
-{% highlight javascript linenos %}
+{% highlight javascript %}
 var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
 var number = <%= @isbn %>;
 

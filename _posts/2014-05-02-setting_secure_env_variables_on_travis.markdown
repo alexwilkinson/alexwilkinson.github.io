@@ -40,6 +40,3 @@ If you have multiple variables in one file, you could also try using this handy 
 That’s it! All you need to do is push with your travis.yml changes, and you’re all set.
 
 Now, back to increasing my test coverage!
-
-
-
