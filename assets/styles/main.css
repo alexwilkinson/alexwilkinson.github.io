@@ -298,7 +298,7 @@ html {
 }
 body {
   line-height: 1;
-  font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 17px "Lato Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 color alpha {
   -webkit-font-smoothing: antialiased;
@@ -308,7 +308,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Lato Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #222;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -372,7 +372,7 @@ figcaption {
   width: 100%;
   text-align: center;
   font-size: 1.3rem;
-  color: #aaa;
+  color: #919191;
   font-weight: 300;
 }
 @media only screen and (max-width: 400px) {
@@ -549,7 +549,7 @@ pre {
   width: 25%;
   float: right;
   font-weight: 300;
-  color: #aaa;
+  color: #919191;
   text-align: right;
   -webkit-transition: all ease-in-out 0.2s;
           transition: all ease-in-out 0.2s;
@@ -589,7 +589,7 @@ pre {
 }
 .post > .date,
 .post > .post-tags {
-  color: #aaa;
+  color: #919191;
   font-weight: 300;
   font-size: 1.4rem;
   text-transform: uppercase;
@@ -696,7 +696,7 @@ pre {
   width: 25%;
   float: right;
   font-weight: 300;
-  color: #aaa;
+  color: #919191;
   text-align: right;
   -webkit-transition: all ease-in-out 0.2s;
           transition: all ease-in-out 0.2s;
@@ -723,7 +723,7 @@ pre {
 }
 .author > .toright > .name {
   font-size: 1.5rem;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Lato Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   margin: 6px 0 0;
 }
@@ -740,9 +740,9 @@ pre {
   }
 }
 .author > .toright > .bio {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Lato Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
-  color: #aaa;
+  color: #919191;
   font-size: 1.3rem;
   text-align: justify;
   line-height: 1.5;
@@ -803,7 +803,7 @@ pre {
   padding: 40px 0;
   margin: 40px 0 0;
   font-size: 1.3rem;
-  color: #aaa;
+  color: #919191;
   font-weight: 300;
   text-align: center;
   position: relative;
@@ -827,7 +827,7 @@ pre {
 }
 .footer-main > .link > .icon {
   width: 15px !important;
-  fill: #aaa !important;
+  fill: #919191 !important;
   -webkit-transition: ease-in-out all 0.3s;
           transition: ease-in-out all 0.3s;
   position: relative;
@@ -839,7 +839,7 @@ pre {
   fill: #4b0082 !important;
 }
 .footer-main > .extra {
-  color: #aaa;
+  color: #919191;
   margin-top: 0;
 }
 .footer-main > .extra > .link {
@@ -851,7 +851,7 @@ pre {
   padding-bottom: 1px;
 }
 .footer-main > .extra > .link:hover {
-  border-color: #aaa;
+  border-color: #919191;
 }
 .header-home {
   display: block;
@@ -879,7 +879,7 @@ pre {
   font-size: 1.85rem;
   font-weight: 300;
   font-style: normal;
-  color: #aaa;
+  color: #919191;
   width: 70%;
   margin: 0 auto 30px;
 }
@@ -994,7 +994,7 @@ pre {
   width: 100%;
   text-align: center;
   display: block;
-  color: #aaa;
+  color: #919191;
   letter-spacing: 4px;
   position: relative;
   top: -8px;
