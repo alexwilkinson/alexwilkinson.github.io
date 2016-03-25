@@ -6,7 +6,7 @@ bio: 'web developer, writer, board game designer'
 external-image: false
 picture: 'assets/images/profile.jpg'
 
-url: 'http://alexwilkinson.me'
+url: 'http://alexwilkinson.github.io'
 # your url: http://USERNAME.github.io
 
 permalink: /:title/
