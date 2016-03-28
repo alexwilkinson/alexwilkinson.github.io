@@ -49,6 +49,14 @@ gulp.task('styles', function() {
         .pipe(gulp.dest('assets/styles'));
 });
 
+gulp.task('fonts', function() {
+  return gulp.src('src/styles/fonts/*')
+  .pipe(changed('assets/styles/fonts/'))
+  .pipe(plumber())
+  .pipe(gulp.dest('_site/assets/styles/fonts'))
+  .pipe(gulp.dest('assets/styles/fonts'));
+});
+
 gulp.task('imagemin', function(tmp) {
     return gulp.src('assets/images/**/*.{jpg,png,gif}')
         .pipe(changed('assets/images'))
@@ -58,9 +66,9 @@ gulp.task('imagemin', function(tmp) {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('src/styles/**/*', ['styles']);
+    gulp.watch('src/styles/**/*', ['fonts', 'styles']);
     gulp.watch('src/images/**/*.{jpg,png,gif}', ['imagemin']);
     gulp.watch(['_drafts/*', '_includes/*', '_layouts/*', '_posts/*', '*.{html,md}', '_config.yml'], ['jekyll-rebuild']);
 });
 
-gulp.task('default', ['styles', 'imagemin', 'browserSync', 'watch']);
+gulp.task('default', ['fonts', 'styles', 'imagemin', 'browserSync', 'watch']);
