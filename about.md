@@ -30,12 +30,11 @@ about artificial intelligence that I hope to finish some day.</p>
 <ul class="skill-list">
 	<li>Ruby</li>
 	<li>Ruby on Rails</li>
-	<li>HTML - Erb</li>
 	<li>Backbone</li>
 	<li>Ember</li>
 	<li>jQuery</li>
-	<li>CSS (Sass)</li>
-	<li>CSS Frameworks (Bootstrap)</li>
 	<li>Git</li>
-	<li>PostgreQL</li>
+	<li>CSS & Sass</li>
+	<li>Bootstrap</li>
+	<li>HTML</li>
 </ul>
