@@ -10,9 +10,12 @@ technology. At Wesleyan University, I pursued my interest in writing on
 multiple fronts: editing the campus newspaper, founding a long-form journalism
 magazine, and writing short stories. After graduating, I worked in The New York
 Times R&D Department, where I took on programming assignments and learned that
-I wanted to spend the rest of my life coding.</p>
+I wanted to start a career as a Software Engineer. In order to do so, I left
+the Times to attend the Web Development Immersive course at the Flatiron
+School, a bootcamp-style education that prepared me very well to become a
+working programmer.</p>
 
-<p>My first job as a software engineer at Continuity was an incredible
+<p>My first job as a Software Engineer at Continuity was an incredible
 experience. I discovered the immense value of test-driven development and pair
 programming and began developing my instincts for good object design and
 pragmatic architecture choices. I will carry with me for the rest of my career
