@@ -45,7 +45,7 @@ black cat, I spend my time designing board games. It has been exciting
 discovering the many parallels between that process and the day-to-day
 activities of a software engineer. I also love integrating technology into my board
 game projects—I am currently writing a React Native companion
-app for my choose-your-own-adventure board game, as well as a Rails CRM to
+app for my choose-your-own-adventure board game, as well as a Rails CMS to
 input the game's stories.</p>
 
 <h2>Primary Skills</h2>
